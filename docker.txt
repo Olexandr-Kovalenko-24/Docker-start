@@ -1,0 +1,16 @@
+Linux:
+docker run -it -p 6000:5432 -v ~/backup_db:/var/lib/postgresql/data -e POSTGRES_PASSWORD=test -e POSTGRES_USER=test -e POSTGRES_DB=docker_db --name sql postgres:alpine
+Windows (C:\Users\user - сприймає через ":" невірноб тому):
+docker run -it -p 6000:5432 -v ./test:/var/lib/postgresql/data -e POSTGRES_PASSWORD=test -e POSTGRES_USER=test -e POSTGRES_DB=docker_db --name sql postgres:alpine
+
+docker ps -a
+
+docker rm sql
+
+docker build ./ -t server:0.0.1
+
+Linux:
+docker run -it -v "$(pwd)":/app:ro -p 5000:5000 --name server server:0.0.1
+Windows:
+docker run -it -v c:\users\user\documents\docker:/app:ro -p 5000:5000 --name server server:0.0.2
+
